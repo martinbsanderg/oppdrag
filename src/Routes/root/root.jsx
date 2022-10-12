@@ -22,7 +22,7 @@ export default function RootRoute() {
   return (
     <Box sx={{ display: "flex" }}>
         <ResponsiveDrawer/>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" height="100vh" sx={{  flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Outlet />
       </Box>

@@ -6,12 +6,9 @@ import { useMemo, useState } from "react";
 export default function TableSection() {
   const [serachOutput, setSearchPut] = useState("");
 
-  const searchArray = useMemo(() =>{
-    return(
-      assetArray.map((asset) => {
+  const searchArray = assetArray.map((asset) => {
       return `${asset.nameFirst} ${asset.nameLast} ${asset.ccnumber} (id: ${asset.id})`;
-    }))
-  });
+    })
 
   const handleSearcOutput = (v) => {
     console.log(v);

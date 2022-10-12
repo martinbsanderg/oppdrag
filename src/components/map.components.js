@@ -1,62 +1,92 @@
+import { Box } from "@mui/material";
 import mapboxgl from "mapbox-gl";
 import React, { useState, useEffect, useRef } from "react";
 import geoJsonObjectsArray from "../assets/geoJsonObjects.json";
 import "./map.css";
+import MapSidebar from "../components/mapSidebar.component";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibWFydGlic2EiLCJhIjoiY2w4eDZ5Ymw4MDQxcjNubXhqcTF1YTRtNCJ9.e1X2ZPW-v5GplE6pqI3gLQ";
 
 //
 
-function MapComponent() {const mapContainer = useRef(null);
+function MapComponent() {
+  const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-77.03238901390978);
   const [lat, setLat] = useState(38.913188059745586);
   const [zoom, setZoom] = useState(2);
   const [ageRange, setAgeRange] = useState(null);
-  const popupArray = useRef([])
+  const popupArray = useRef([]);
+  const markerArray = useRef([]);
+  const [sidebarHeight, setSidebarHeight] = useState(null);
+  const myRef = useRef(null);
+  const [marker, setMarker] = useState("");
+
+
+  useEffect(() => {
+    if (myRef.current.clientHeight) {
+      setSidebarHeight(myRef.current.clientHeight);
+    }
+  }, []);
 
   const handleHover = (popup, id) => {
-    popupArray.current.push({ id: id, popup: popup, sticky: false })
+    popupArray.current.push({ id: id, popup: popup, sticky: false });
     popup.addTo(map.current);
   };
 
   const handleHoverOff = () => {
     const popupToRemove = popupArray.current[popupArray.current.length - 1];
-  
-    
+
     if (!popupToRemove["sticky"]) {
       console.log("Handleeoff");
       popupToRemove["popup"].remove();
 
-      popupArray.current.pop()
-      }
-      console.log(popupArray.current);
+      popupArray.current.pop();
     }
-
-  const handleAgeRange = () => {
-    setAgeRange(() => [20, 30]);
+    console.log(popupArray.current);
   };
 
   const removeAllPopups = () => {
     console.log(popupArray.current);
-    
-    for (let object of popupArray.current){
+
+    for (let object of popupArray.current) {
       console.log(object);
     }
 
-    popupArray.current.map(p => {
-      console.log(p);
-      p["popup"].remove()
-    })
+    popupArray.current.map((p) => {
+      p["popup"].remove();
+    });
 
-    
-    
-  }
+    markerArray.current.map((p) => {
+      console.log(p);
+      p.remove();
+    });
+  };
 
   const handleKeyPress = (event) => {
- 
     event.key === "r" && removeAllPopups();
+  };
+
+  const handleMarkerInput = (input, personID) => {
+    const markerGeoJsonObject = geoJsonObjectsArray.find(
+      (object) => object.properties.id === personID
+    );
+
+    const { id, nameFirst, nameLast, age, ccnumber } =
+      markerGeoJsonObject.properties;
+
+    const marker = new mapboxgl.Marker()
+      .setLngLat(markerGeoJsonObject.geometry.coordinates)
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25,  closeOnClick: false}) // add popups
+          .setHTML(`<h3>${nameFirst + " " + nameLast}</h3>
+          <p> <Strong>Age: </Strong> ${age}</p>
+          <p> <Strong>ccnumber: </Strong> ${ccnumber}</p>`)
+      )
+      .addTo(map.current);
+
+    markerArray.current.push(marker);
   };
 
   useEffect(() => {
@@ -203,26 +233,44 @@ function MapComponent() {const mapContainer = useRef(null);
         map.current.getCanvas().style.cursor = "";
         handleHoverOff();
       });
-      map.current.setFog({
-        });
-         
-
+      map.current.setFog({});
     });
   }, []);
 
+  // useEffect(()=>{
+  //   new mapboxgl.Marker().setLngLat([]).addTo(map.current)
+  // }, [])
+
   return (
-    <>
-      <div>
-        <div className="sidebar">
-          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        </div>
+    <Box
+      sx={{
+        width: "100%",
+        height: "85%",
+        display: "inline-flex",
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        border: 1,
+      }}
+    >
+      <Box
+        id="sidebar"
+        sx={{ width: "25%", height: "100%", p: 1.5 }}
+        ref={myRef}
+      >
+        <MapSidebar setMarker={handleMarkerInput} boxHeight={sidebarHeight} />
+      </Box>
+      <Box sx={{ width: "75%", height: "100%" }}>
         <div
           onKeyPress={handleKeyPress}
           ref={mapContainer}
           className="map-container"
-        />
-      </div>
-    </>
+        >
+          <div className="nav-values">
+            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+          </div>
+        </div>
+      </Box>
+    </Box>
   );
 }
 
