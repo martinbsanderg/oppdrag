@@ -31,40 +31,21 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Kommentar
+ 
+I skrivende stund er det 9 minutter til deadline. Jeg vil bruke intevjuet til å snakke om hvordan jeg har gått frem, hvordan jeg har tenkt og gi oversiktelig beskrivelse av applikasjonen. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Veldig kort oppsummert kan det sies at jeg hadde tilnærmet null erfaring med:
+1. MapBox
+2. Implementere MUI
+3. Bruke Nivo til å fremstille grafer
+4. Skrive tester (ikke inkludert)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Brukte mye tid på å parse og formatere data i Python
 
-## Learn More
+Har aldri jobbet med et så stort prosjekt i react før, les jeg jobber som UX-designer og har en IT grad hvor front-endutvikling inngår. Hadde jeg ikke fått så dårlig tid ville jeg satt meg inn i testing og skrevet tester til applikasjonen slik dere forespør i oppagaven. Jeg vill også refaktorert oppgaven slik at det var lette å se hva jeg har gjort og tenkt
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Alt i alt er jeg fornøyd da læringskurven har vært stupbratt og erfaringsgrunnlaget smått. Om ikke produktet lever opp til utvikler-standard håper jeg denne oppgaven heller kan gi dere et inntrykk av lærevilje og innsats:-) 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4 min til deadline, nå må jeg laste opp sende.. vi sees på intervju!

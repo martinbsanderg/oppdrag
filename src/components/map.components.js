@@ -250,6 +250,7 @@ function MapComponent() {
         flexDirection: "row",
         flexWrap: "nowrap",
         border: 1,
+        marginBottom: 6,
       }}
     >
       <Box

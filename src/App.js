@@ -1,12 +1,6 @@
-import "./App.css";
+
 
 import metaInfo from "./assets/metaInfo.json";
-import MyResponsiveBar from "./components/responsiveBar.component";
-import MyResponsiveChoropleth from "./components/mapChart.component";
-import MyResponsivePie from "./components/pieChart.component";
-import features from "./assets/nivoMapFeature.json";
-import DataGridDemo from "./components/table.component";
-import assetArray from "./assets/assetArray.json"
 import MapComponent from "./components/map.components";
 import {
   createBrowserRouter,
@@ -14,9 +8,12 @@ import {
   Route,
 } from "react-router-dom";
 import ResponsiveDrawer from "./Routes/root/root";
-import TableSection from "./Routes/root/materialTable.route";
+import TableSection from "./Routes/tableview/materialTable.route";
 import RootRoute from "./Routes/root/root";
-
+import Overview from "./Routes/overview/overview";
+import GraphSite from "./Routes/graphs/graphs";
+import features from "./assets/nivoMapFeature.json"
+import MyResponsiveChoropleth from "./components/mapChart.component";
 
 const metDataNivo = metaInfo.ccInfo.cardBrands.map(({ name, count }) => {
   return { id: name, label: name, value: count };
@@ -32,7 +29,6 @@ const mdBar = metaInfo.ageInfo.ageGroups.map(({ name, count }) => ({
 }));
 
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,17 +39,19 @@ const router = createBrowserRouter([
         element:<TableSection/>
       },
       {
-        path:"overview",
-        element: <MapComponent />
+        index:true,
+        element: <Overview />
+      },{
+        path:"EnrichedData",
+        element: <GraphSite />
       }
     ]
   },
 ]);
 
 function App() {
-  return (
-    <>
-
+  return (<>
+    {/* <MyResponsiveChoropleth data={metaDataNivoMap} features={features}/> */}
     <RouterProvider router={router} />
     </>
   );

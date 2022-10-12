@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function Autocompleter({ dataArray, sendOutput }) {
+export default function Autocompleter({ dataArray, sendOutput, name }) {
   // Hook included to prevent serach on strings shorter than three digits
   const [aboveThree, setAboveThree] = React.useState(false);
 
@@ -21,7 +21,7 @@ export default function Autocompleter({ dataArray, sendOutput }) {
         options={aboveThree ? dataArray : emptyArray}
         renderInput={(params) => {
           setAboveThree(params.inputProps.value.length > 2);
-          return <TextField {...params} label="Assets" />;
+          return <TextField {...params} label={name} />;
         }}
         onChange={handleChange}
       />

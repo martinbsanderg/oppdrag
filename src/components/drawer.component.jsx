@@ -17,8 +17,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import TableRowsIcon from '@mui/icons-material/TableRows';
 import { styled, useTheme } from "@mui/material/styles";
-
+import PublicIcon from '@mui/icons-material/Public';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -150,7 +152,7 @@ export default function ResponsiveDrawer() {
               }}
               selected={selectedIndex === 1}
               onClick={(event) => handleListItemClick(event, 1)}
-              href="overview"
+              href="/"
             >
               <ListItemIcon
                 sx={{
@@ -159,13 +161,13 @@ export default function ResponsiveDrawer() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <PublicIcon/>
               </ListItemIcon>
               <ListItemText primary="Overview" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
 
-          <ListItem key="Raw Table" disablePadding sx={{ display: "block" }}>
+          <ListItem key="Table informations" disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -183,7 +185,7 @@ export default function ResponsiveDrawer() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <TableRowsIcon/>
               </ListItemIcon>
               <ListItemText
                 primary="Raw Table"
@@ -207,6 +209,7 @@ export default function ResponsiveDrawer() {
               }}
               selected={selectedIndex === 3}
               onClick={(event) => handleListItemClick(event, 3)}
+              href="EnrichedData"
             >
               <ListItemIcon
                 sx={{
@@ -215,7 +218,7 @@ export default function ResponsiveDrawer() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+              <AutoGraphIcon/>
               </ListItemIcon>
               <ListItemText
                 primary="Enriched Data"
