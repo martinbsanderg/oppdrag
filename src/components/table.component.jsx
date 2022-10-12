@@ -3,12 +3,12 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 
 
-export default function DataGridDemo({columns, rows}) {
+export default function MyDataGrid({columns, rows}) {
   const [pageSize, setPageSize] = React.useState(5);
 
 
   return (
-    <Box sx={{ width: "85%", marginLeft: "10%" }}>
+    <Box sx={{ width: "100%", }}>
       <DataGrid
         rows={rows}
         columns={columns}
